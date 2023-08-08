@@ -230,7 +230,7 @@ const Profile = () => {
                           </label>
                           <Input
                             className="form-control-alternative"
-                            defaultValue="Confirm Password"
+                            defaultValue="Password"
                             id="input-confirm-password"
                             placeholder="Confirm Password"
                             type="password"

@@ -49,7 +49,7 @@ const Admin = (props) => {
         {...props}
         logo={{
           innerLink: "/admin/index",
-          imgSrc: require("../assets/img/brand/argon-react.png"),
+          imgSrc: require("../assets/img/brand/logo-transparent-png.png"),
           imgAlt: "...",
         }}
       />
