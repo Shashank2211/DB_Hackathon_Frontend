@@ -2,6 +2,7 @@ import Index from "views/Index.js";
 import Profile from "views/examples/Profile.js";
 import Notification from "views/examples/Notification.js";
 import Book from "views/examples/Book.js";
+import Watchlist from "views/examples/Watchlist";
 
 var routes = [
   {
@@ -16,6 +17,13 @@ var routes = [
     name: "Book",
     icon: "ni ni-bullet-list-67 text-red",
     component: <Book />,
+    layout: "/admin",
+  },
+  {
+    path: "/watchlist",
+    name: "Watchlist",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: <Watchlist />,
     layout: "/admin",
   },
   {

@@ -41,3 +41,34 @@ export const reportTrade = async (id, authority, message) => {
     return error.response;
   }
 };
+
+export const addToWatchlist = async (id) => {
+  try {
+    const response = await axiosInstance.post(`/api/addToWatchlist/`, {
+      id: id,
+    });
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const getAllTradeByWatchList = async () => {
+  try {
+    const response = await axiosInstance.get(`/api/getAllTradeByWatchList/`);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const deleteFromWatchlist = async (id) => {
+  try {
+    const response = await axiosInstance.post(`/api/deleteFromWatchlist/`, {
+      id: id,
+    });
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};

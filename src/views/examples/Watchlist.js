@@ -26,20 +26,16 @@ import {
 import Header from "components/Headers/Header.js";
 import { useEffect, useState } from "react";
 import {
-  getAllTradeByBook,
+  getAllTradeByWatchList,
   reportTrade,
-  addToWatchlist,
+  deleteFromWatchlist,
 } from "../../api/user-api";
 import { useAlert } from "../../utils/AlertProvider";
 import useTradeStore from "../../store/trade";
 
-const Book = () => {
+const Watchlist = () => {
   const filters = ["All", "Red Flags", "Orange Flags"];
   const [activeFilter, setActiveFilter] = useState(0);
-
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const id = urlParams.get("id");
 
   const [allTrades, setAllTrades] = useState([]);
 
@@ -55,7 +51,7 @@ const Book = () => {
   const setGreenFlags = useTradeStore((state) => state.setGreenFlags);
 
   const fetchData = async () => {
-    const res = await getAllTradeByBook(id);
+    const res = await getAllTradeByWatchList();
     if (res.success) {
       setAllTrades(res.data);
       setTrades(res.data);
@@ -90,20 +86,9 @@ const Book = () => {
     }
   };
 
-  const handleAddToWatchlist = async (id) => {
-    const res = await addToWatchlist(id);
-    if (res.success) {
-      console.log(res.data);
-      showAlert(res.message, "success");
-    } else {
-      console.log(res.error);
-      showAlert(res.message, "danger");
-    }
-  };
-
   useEffect(() => {
     fetchData();
-  }, [id]);
+  }, []);
 
   const AUTHORITY = ["Authority 1", "Authority 2"];
 
@@ -134,6 +119,18 @@ const Book = () => {
       setReportId("");
     }
     setOpenModal(!openModal);
+  };
+
+  const handleDeleteFromWatchlist = async (id) => {
+    const res = await deleteFromWatchlist(id);
+    if (res.success) {
+      console.log(res.data);
+      showAlert(res.message, "success");
+      fetchData();
+    } else {
+      console.log(res.error);
+      showAlert(res.message, "danger");
+    }
   };
 
   return (
@@ -354,9 +351,11 @@ const Book = () => {
 
                               <DropdownItem
                                 href='#pablo'
-                                onClick={(e) => handleAddToWatchlist(trade.id)}
+                                onClick={(e) =>
+                                  handleDeleteFromWatchlist(trade.id)
+                                }
                               >
-                                Add to Watchlist
+                                Remove from Watchlist
                               </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
@@ -499,4 +498,4 @@ const Book = () => {
   );
 };
 
-export default Book;
+export default Watchlist;
