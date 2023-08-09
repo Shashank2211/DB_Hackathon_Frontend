@@ -37,7 +37,7 @@ const Securities = () => {
 
   return (
     <>
-      <SecurityHeader count={100} />
+      <SecurityHeader count={securities.length} />
       {/* Page content */}
       <Container className='mt--7' fluid>
         {/* Table */}

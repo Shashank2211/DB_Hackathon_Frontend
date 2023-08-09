@@ -90,3 +90,14 @@ export const dashboard = async () => {
     return error.response;
   }
 };
+
+export const searchRelatedSecutity = async (searchQuery) => {
+  try {
+    const response = await axiosInstance.post(`/api/searchRelatedSecutity/`, {
+      searchQuery: searchQuery,
+    });
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};

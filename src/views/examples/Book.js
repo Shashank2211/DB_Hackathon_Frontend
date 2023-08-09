@@ -128,12 +128,17 @@ const Book = () => {
     }
   };
   const [openModal, setOpenModal] = useState(false);
+  const [openDetailModal, setOpenDetailModal] = useState(false);
 
   const toggleModal = () => {
     if (!openModal) {
       setReportId("");
     }
     setOpenModal(!openModal);
+  };
+
+  const toggleDetailModal = () => {
+    setOpenDetailModal(!openDetailModal);
   };
 
   return (
@@ -159,7 +164,7 @@ const Book = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <h3 className='mb-0'>Book 2</h3>
+                  <h3 className='mb-0'>Book</h3>
                   <div className='row pr-4'>
                     {filters.map((filter, index) => {
                       return (
@@ -202,166 +207,248 @@ const Book = () => {
                       ((today - tradeDate) / (maturityDate - tradeDate)) * 100;
 
                     return (
-                      <tr key={index}>
-                        <th scope='row'>
-                          <Media className='align-items-center'>
-                            <a
-                              className='avatar rounded-circle mr-3'
-                              href='#pablo'
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              <img
-                                alt='...'
-                                src={require("../../assets/img/theme/bootstrap.jpg")}
-                              />
-                            </a>
-                            <Media>
-                              <button
-                                style={{
-                                  border: "none",
-                                  backgroundColor: "transparent",
-                                }}
+                      <>
+                        <tr key={index}>
+                          <th scope='row'>
+                            <Media className='align-items-center'>
+                              <a
+                                className='avatar rounded-circle mr-3'
+                                href='#pablo'
+                                onClick={toggleDetailModal}
                               >
-                                <span className='mb-0 text-sm'>
-                                  ISIN: {trade.security.ISIN}
-                                </span>
-                              </button>
+                                <img
+                                  alt='...'
+                                  src={require("../../assets/img/theme/bootstrap.jpg")}
+                                />
+                              </a>
+                              <Media>
+                                <button
+                                  style={{
+                                    border: "none",
+                                    backgroundColor: "transparent",
+                                  }}
+                                  onClick={toggleDetailModal}
+                                >
+                                  <span className='mb-0 text-sm'>
+                                    ISIN: {trade.security.ISIN}
+                                  </span>
+                                </button>
+                              </Media>
                             </Media>
-                          </Media>
-                        </th>
-                        <td>${trade.quantity * trade.price} USD</td>
-                        <td>
-                          <div
-                            className='avatar-group'
-                            // style={{
-                            //   display: "flex",
-                            //   justifyContent: "center",
-                            // }}
-                          >
-                            <a
-                              className='avatar avatar-sm'
-                              href='#pablo'
-                              id='tooltip996637554'
-                              onClick={(e) => e.preventDefault()}
+                          </th>
+                          <td>${trade.quantity * trade.price} USD</td>
+                          <td>
+                            <div
+                              className='avatar-group'
+                              // style={{
+                              //   display: "flex",
+                              //   justifyContent: "center",
+                              // }}
                             >
-                              <img
-                                alt='...'
-                                className='rounded-circle'
-                                src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                              />
-                            </a>
-                            <UncontrolledTooltip
-                              delay={0}
-                              target='tooltip996637554'
-                            >
-                              {trade.counterparty.name}
-                            </UncontrolledTooltip>
-                          </div>
-                        </td>
-                        <td>
-                          {today > settlementDate ? (
-                            <Badge color='' className='badge-dot mr-4'>
-                              <i
-                                className='bg-danger'
-                                style={{
-                                  width: "20px",
-                                  height: "20px",
-                                }}
-                              />
-                              Settlement Date Passed
-                            </Badge>
-                          ) : settlementDate < maturityDate ? (
-                            <Badge color='' className='badge-dot mr-4'>
-                              <i
-                                className='bg-danger'
-                                style={{
-                                  width: "20px",
-                                  height: "20px",
-                                }}
-                              />
-                              Incorrect Settlement Date
-                            </Badge>
-                          ) : today > maturityDate && today < settlementDate ? (
-                            <Badge color='' className='badge-dot mr-4'>
-                              <i
-                                className='bg-warning'
-                                style={{
-                                  width: "20px",
-                                  height: "20px",
-                                }}
-                              />
-                              Settlement Date Approaching
-                            </Badge>
-                          ) : (
-                            <Badge color='' className='badge-dot mr-4'>
-                              <i
-                                className='bg-success'
-                                style={{
-                                  width: "20px",
-                                  height: "20px",
-                                }}
-                              />
-                              Active
-                            </Badge>
-                          )}
-                        </td>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <span className='mr-2'>
-                              {maturityPercentage.toFixed(2)}%
-                            </span>
-                            <div>
-                              <Progress
-                                max='100'
-                                value={maturityPercentage}
-                                barClassName={
-                                  maturityPercentage > 80
-                                    ? "bg-danger"
-                                    : maturityPercentage > 50
-                                    ? "bg-warning"
-                                    : "bg-success"
-                                }
-                              />
+                              <a
+                                className='avatar avatar-sm'
+                                href='#pablo'
+                                id='tooltip996637554'
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <img
+                                  alt='...'
+                                  className='rounded-circle'
+                                  src={require("../../assets/img/theme/team-4-800x800.jpg")}
+                                />
+                              </a>
+                              <UncontrolledTooltip
+                                delay={0}
+                                target='tooltip996637554'
+                              >
+                                {trade.counterparty.name}
+                              </UncontrolledTooltip>
                             </div>
-                          </div>
-                        </td>
-                        <td className='text-right'>
-                          <UncontrolledDropdown>
-                            <DropdownToggle
-                              className='btn-icon-only text-light'
-                              href='#pablo'
-                              role='button'
-                              size='sm'
-                              color=''
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              <i className='fas fa-ellipsis-v' />
-                            </DropdownToggle>
-                            <DropdownMenu className='dropdown-menu-arrow' right>
-                              {trade.isReported ? (
-                                <DropdownItem>Already Reported</DropdownItem>
-                              ) : (
+                          </td>
+                          <td>
+                            {today > settlementDate ? (
+                              <Badge color='' className='badge-dot mr-4'>
+                                <i
+                                  className='bg-danger'
+                                  style={{
+                                    width: "20px",
+                                    height: "20px",
+                                  }}
+                                />
+                                Settlement Date Passed
+                              </Badge>
+                            ) : settlementDate < maturityDate ? (
+                              <Badge color='' className='badge-dot mr-4'>
+                                <i
+                                  className='bg-danger'
+                                  style={{
+                                    width: "20px",
+                                    height: "20px",
+                                  }}
+                                />
+                                Incorrect Settlement Date
+                              </Badge>
+                            ) : today > maturityDate &&
+                              today < settlementDate ? (
+                              <Badge color='' className='badge-dot mr-4'>
+                                <i
+                                  className='bg-warning'
+                                  style={{
+                                    width: "20px",
+                                    height: "20px",
+                                  }}
+                                />
+                                Settlement Date Approaching
+                              </Badge>
+                            ) : (
+                              <Badge color='' className='badge-dot mr-4'>
+                                <i
+                                  className='bg-success'
+                                  style={{
+                                    width: "20px",
+                                    height: "20px",
+                                  }}
+                                />
+                                Active
+                              </Badge>
+                            )}
+                          </td>
+                          <td>
+                            <div className='d-flex align-items-center'>
+                              <span className='mr-2'>
+                                {maturityPercentage.toFixed(2)}%
+                              </span>
+                              <div>
+                                <Progress
+                                  max='100'
+                                  value={maturityPercentage}
+                                  barClassName={
+                                    maturityPercentage > 80
+                                      ? "bg-danger"
+                                      : maturityPercentage > 50
+                                      ? "bg-warning"
+                                      : "bg-success"
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td className='text-right'>
+                            <UncontrolledDropdown>
+                              <DropdownToggle
+                                className='btn-icon-only text-light'
+                                href='#pablo'
+                                role='button'
+                                size='sm'
+                                color=''
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <i className='fas fa-ellipsis-v' />
+                              </DropdownToggle>
+                              <DropdownMenu
+                                className='dropdown-menu-arrow'
+                                right
+                              >
+                                {trade.isReported ? (
+                                  <DropdownItem>Already Reported</DropdownItem>
+                                ) : (
+                                  <DropdownItem
+                                    href='#pablo'
+                                    onClick={(e) => {
+                                      toggleModal();
+                                      setReportId(trade.id);
+                                    }}
+                                  >
+                                    Report
+                                  </DropdownItem>
+                                )}
+
                                 <DropdownItem
                                   href='#pablo'
-                                  onClick={(e) => {
-                                    toggleModal();
-                                    setReportId(trade.id);
-                                  }}
+                                  onClick={(e) =>
+                                    handleAddToWatchlist(trade.id)
+                                  }
                                 >
-                                  Report
+                                  Add to Watchlist
                                 </DropdownItem>
-                              )}
+                              </DropdownMenu>
+                            </UncontrolledDropdown>
+                          </td>
+                        </tr>
 
-                              <DropdownItem
-                                href='#pablo'
-                                onClick={(e) => handleAddToWatchlist(trade.id)}
-                              >
-                                Add to Watchlist
-                              </DropdownItem>
-                            </DropdownMenu>
-                          </UncontrolledDropdown>
-                        </td>
-                      </tr>
+                        <Modal
+                          className='modal-dialog-centered'
+                          isOpen={openDetailModal}
+                          toggle={toggleDetailModal}
+                        >
+                          <div className='modal-header'>
+                            <h5 className='modal-title' id='exampleModalLabel'>
+                              Trade Details
+                            </h5>
+                            <button
+                              aria-label='Close'
+                              className='close'
+                              data-dismiss='modal'
+                              type='button'
+                              onClick={toggleDetailModal}
+                            >
+                              <span aria-hidden={true}>×</span>
+                            </button>
+                          </div>
+
+                          <div className='modal-body'>
+                            <strong>ISIN: </strong> {trade.security.ISIN}
+                            <br />
+                            <strong>CUSIP: </strong> {trade.security.CUSIP}
+                            <br />
+                            <strong>buy_sell: </strong>
+                            {trade.buy_sell}
+                            <br />
+                            <strong>tradeDate: </strong> {trade.tradeDate}
+                            <br />
+                            <strong>settlementDate: </strong>{" "}
+                            {trade.settlementDate}
+                            <br />
+                            <strong>quantity: </strong> {trade.quantity}
+                            <br />
+                            <strong>price: </strong> {trade.price}
+                            <br />
+                            <strong>issuer: </strong> {trade.security.issuer}
+                            <br />
+                            <strong>issuer: </strong> {trade.security.issuer}
+                            <br />
+                            <strong>coupon: </strong> {trade.security.coupon}
+                            <br />
+                            <strong>maturityDate: </strong>{" "}
+                            {trade.security.maturityDate}
+                            <br />
+                            <strong>faceValue: </strong>{" "}
+                            {trade.security.faceValue}
+                            <br />
+                            <strong>typeOfSecurity: </strong>{" "}
+                            {trade.security.typeOfSecurity}
+                            <br />
+                            <strong>status: </strong> {trade.security.status}
+                            <br />
+                            <strong>counterparty: </strong>{" "}
+                            {trade.counterparty.name}
+                            <br />
+                            <strong>Book: </strong> {trade.book.name}
+                            <br />
+                          </div>
+
+                          <div className='modal-footer'>
+                            <Button
+                              color='secondary'
+                              data-dismiss='modal'
+                              type='button'
+                              onClick={toggleDetailModal}
+                            >
+                              Close
+                            </Button>
+                          </div>
+                        </Modal>
+                      </>
                     );
                   })}
                 </tbody>
