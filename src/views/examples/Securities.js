@@ -131,22 +131,52 @@ const Securities = () => {
                     }
                     top
                   />
-                  <CardBody>
-                    <CardText>ISIN: {security.ISIN}</CardText>
-                    <CardText>CUSIP: {security.CUSIP}</CardText>
-                    <CardText>issuer: {security.issuer}</CardText>
-                    <CardText>coupon: {security.coupon}</CardText>
-                    <CardText>faceValue: {security.faceValue}</CardText>
-                    <CardText>maturityDate: {security.maturityDate}</CardText>
-                    <CardText>
-                      typeOfSecurity: {security.typeOfSecurity}
-                    </CardText>
-                    <CardText>status: {security.status}</CardText>
-                    <CardText>
-                      <small className='text-muted'>
-                        Last updated 3 mins ago
-                      </small>
-                    </CardText>
+                  <CardBody className="container">
+                    <div className="row" style={{marginBottom:-10}}>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>ISIN:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.ISIN}</p>
+                      </CardText>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>CUSIP:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.CUSIP}</p>
+                      </CardText>
+                    </div>
+                    <div className="row" style={{marginBottom:-10}}>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>issuer:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.issuer}</p>
+                      </CardText>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>coupon:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.coupon}</p>
+                      </CardText>
+                    </div>
+                    <div className="row" style={{marginBottom:-10}}>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>faceValue:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.faceValue}</p>
+                      </CardText>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>maturityDate:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.maturityDate}</p>
+                      </CardText>
+                    </div>
+                    <div className="row" style={{marginBottom:-10}}>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>typeOfSecurity:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.typeOfSecurity}</p>
+                      </CardText>
+                      <CardText className="col">
+                        <p className="" style={{fontSize:12,marginBottom:0}}>status:</p>
+                        <p className="" style={{fontSize:16,fontWeight:"bold"}}>{security.status}</p>
+                      </CardText>
+                    </div>
+                      <CardText>
+                        <small className='text-muted'>
+                          Last updated 3 mins ago
+                        </small>
+                      </CardText>
                   </CardBody>
                 </Card>
               </Col>

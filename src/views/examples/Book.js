@@ -396,45 +396,23 @@ const Book = () => {
                             </button>
                           </div>
 
-                          <div className='modal-body'>
-                            <strong>ISIN: </strong> {trade.security.ISIN}
-                            <br />
-                            <strong>CUSIP: </strong> {trade.security.CUSIP}
-                            <br />
-                            <strong>buy_sell: </strong>
-                            {trade.buy_sell}
-                            <br />
-                            <strong>tradeDate: </strong> {trade.tradeDate}
-                            <br />
-                            <strong>settlementDate: </strong>{" "}
-                            {trade.settlementDate}
-                            <br />
-                            <strong>quantity: </strong> {trade.quantity}
-                            <br />
-                            <strong>price: </strong> {trade.price}
-                            <br />
-                            <strong>issuer: </strong> {trade.security.issuer}
-                            <br />
-                            <strong>issuer: </strong> {trade.security.issuer}
-                            <br />
-                            <strong>coupon: </strong> {trade.security.coupon}
-                            <br />
-                            <strong>maturityDate: </strong>{" "}
-                            {trade.security.maturityDate}
-                            <br />
-                            <strong>faceValue: </strong>{" "}
-                            {trade.security.faceValue}
-                            <br />
-                            <strong>typeOfSecurity: </strong>{" "}
-                            {trade.security.typeOfSecurity}
-                            <br />
-                            <strong>status: </strong> {trade.security.status}
-                            <br />
-                            <strong>counterparty: </strong>{" "}
-                            {trade.counterparty.name}
-                            <br />
-                            <strong>Book: </strong> {trade.book.name}
-                            <br />
+                          <div className='modal-body' style={{display:"grid", gridTemplateColumns:"auto auto", rowGap:20}}>
+                            <div className="grid-item"><strong>ISIN: </strong> {trade.security.ISIN}</div>
+                            <div className="grid-item"><strong>CUSIP: </strong> {trade.security.CUSIP}</div>
+                            <div className="grid-item"><strong>buy_sell: </strong> {trade.buy_sell}</div>
+                            <div className="grid-item"><strong>tradeDate: </strong> {trade.tradeDate}</div>
+                            <div className="grid-item"><strong>settlementDate: </strong>{" "} {trade.settlementDate}</div>
+                            <div className="grid-item"><strong>quantity: </strong> {trade.quantity}</div>
+                            <div className="grid-item"><strong>price: </strong> {trade.price}</div>
+                            <div className="grid-item"><strong>issuer: </strong> {trade.security.issuer}</div>
+                            <div className="grid-item"><strong>issuer: </strong> {trade.security.issuer}</div>
+                            <div className="grid-item"><strong>coupon: </strong> {trade.security.coupon}</div>
+                            <div className="grid-item"><strong>maturityDate: </strong>{" "} {trade.security.maturityDate}</div>
+                            <div className="grid-item"><strong>faceValue: </strong>{" "} {trade.security.faceValue}</div>
+                            <div className="grid-item"><strong>typeOfSecurity: </strong>{" "} {trade.security.typeOfSecurity}</div>
+                            <div className="grid-item"><strong>status: </strong> {trade.security.status}</div>
+                            <div className="grid-item"><strong>counterparty: </strong>{" "} {trade.counterparty.name}</div>
+                            <div className="grid-item"><strong>Book: </strong> {trade.book.name}</div>
                           </div>
 
                           <div className='modal-footer'>

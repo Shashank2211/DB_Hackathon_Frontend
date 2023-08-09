@@ -31,7 +31,7 @@ const Header = (props) => {
                       </Col>
                     </Row>
                     <p className='mt-3 mb-0 text-muted text-sm'>
-                      <span className='text-nowrap'> total trades </span>
+                      <span className='text-nowrap'> Total Trades </span>
                     </p>
                   </CardBody>
                 </Card>
