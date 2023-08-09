@@ -39,6 +39,11 @@ const AdminNavbar = (props) => {
     fetchData();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/auth/login";
+  };
+
   return (
     <>
       <Navbar className='navbar-top navbar-dark' expand='md' id='navbar-main'>
@@ -75,7 +80,7 @@ const AdminNavbar = (props) => {
                   <span>My profile</span>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem href='#pablo' onClick={(e) => e.preventDefault()}>
+                <DropdownItem href='#pablo' onClick={handleLogout}>
                   <i className='ni ni-user-run' />
                   <span>Logout</span>
                 </DropdownItem>
