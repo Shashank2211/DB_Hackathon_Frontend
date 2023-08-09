@@ -72,3 +72,21 @@ export const deleteFromWatchlist = async (id) => {
     return error.response;
   }
 };
+
+export const getAllSecurities = async () => {
+  try {
+    const response = await axiosInstance.get(`/api/getAllSecurities/`);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const dashboard = async () => {
+  try {
+    const response = await axiosInstance.get(`/api/dashboard/`);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};

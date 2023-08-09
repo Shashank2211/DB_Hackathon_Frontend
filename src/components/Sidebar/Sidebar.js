@@ -228,12 +228,12 @@ const Sidebar = (props) => {
                 {"Watchlist"}
               </NavLink>
               <NavLink
-                to={"/admin/notification"}
+                to={"/admin/securities"}
                 tag={NavLinkRRD}
                 onClick={closeCollapse}
               >
                 <i className='ni ni-bullet-list-67 text-red' />
-                {"Notification"}
+                {"Securities"}
               </NavLink>
               <NavLink
                 to={"/admin/user-profile"}

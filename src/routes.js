@@ -1,6 +1,6 @@
 import Index from "views/Index.js";
 import Profile from "views/examples/Profile.js";
-import Notification from "views/examples/Notification.js";
+import Securities from "views/examples/Securities.js";
 import Book from "views/examples/Book.js";
 import Watchlist from "views/examples/Watchlist";
 
@@ -27,10 +27,10 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/notification",
-    name: "Notifications",
+    path: "/securities",
+    name: "Securities",
     icon: "ni ni-bullet-list-67 text-red",
-    component: <Notification />,
+    component: <Securities />,
     layout: "/admin",
   },
   {
