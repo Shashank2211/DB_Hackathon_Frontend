@@ -65,7 +65,14 @@ const Sidebar = (props) => {
   const fetchData = async () => {
     const response = await getUserBooks();
     if (response.success) {
-      setBooks(response.data.map((i) => i.book.name));
+      setBooks(
+        response.data.map((i) => {
+          return {
+            id: i.id,
+            name: i.book.name,
+          };
+        })
+      );
     } else {
       console.log(response.error);
       showAlert(response.message, "danger");
@@ -136,18 +143,6 @@ const Sidebar = (props) => {
                 <i className='ni ni-single-02' />
                 <span>My profile</span>
               </DropdownItem>
-              <DropdownItem to='/admin/user-profile' tag={Link}>
-                <i className='ni ni-settings-gear-65' />
-                <span>Settings</span>
-              </DropdownItem>
-              <DropdownItem to='/admin/user-profile' tag={Link}>
-                <i className='ni ni-calendar-grid-58' />
-                <span>Activity</span>
-              </DropdownItem>
-              <DropdownItem to='/admin/user-profile' tag={Link}>
-                <i className='ni ni-support-16' />
-                <span>Support</span>
-              </DropdownItem>
               <DropdownItem divider />
               <DropdownItem href='#pablo' onClick={(e) => e.preventDefault()}>
                 <i className='ni ni-user-run' />
@@ -216,12 +211,12 @@ const Sidebar = (props) => {
               {books.map((i, index) => (
                 <NavLink
                   key={index}
-                  to={"/admin/book?id=" + index}
+                  to={"/admin/book?id=" + i.id}
                   tag={NavLinkRRD}
                   onClick={closeCollapse}
                 >
                   <i className='ni ni-bullet-list-67 text-red' />
-                  Book : {i}
+                  Book : {i.name}
                 </NavLink>
               ))}
               <NavLink

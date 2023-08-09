@@ -17,3 +17,27 @@ export const getUserBooks = async () => {
     return error.response;
   }
 };
+
+export const getAllTradeByBook = async (bookId) => {
+  try {
+    const response = await axiosInstance.post(`/api/getAllTradeByBook/`, {
+      id: bookId,
+    });
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const reportTrade = async (id, authority, message) => {
+  try {
+    const response = await axiosInstance.post(`/api/reportTrade/`, {
+      id: id,
+      authority: authority,
+      message: message,
+    });
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};

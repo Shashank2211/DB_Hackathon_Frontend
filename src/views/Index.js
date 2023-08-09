@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Argon Dashboard React - v1.2.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import { useState } from "react";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
@@ -65,30 +48,30 @@ const Index = (props) => {
     <>
       <Header />
       {/* Page content */}
-      <Container className="mt--7" fluid>
+      <Container className='mt--7' fluid>
         <Row>
-          <Col className="mb-5 mb-xl-0" xl="8">
-            <Card className="bg-gradient-default shadow">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-light ls-1 mb-1">
+          <Col className='mb-5 mb-xl-0' xl='8'>
+            <Card className='bg-gradient-default shadow'>
+              <CardHeader className='bg-transparent'>
+                <Row className='align-items-center'>
+                  <div className='col'>
+                    <h6 className='text-uppercase text-light ls-1 mb-1'>
                       Overview
                     </h6>
-                    <h2 className="text-white mb-0">Sales value</h2>
+                    <h2 className='text-white mb-0'>Sales value</h2>
                   </div>
-                  <div className="col">
-                    <Nav className="justify-content-end" pills>
+                  <div className='col'>
+                    <Nav className='justify-content-end' pills>
                       <NavItem>
                         <NavLink
                           className={classnames("py-2 px-3", {
                             active: activeNav === 1,
                           })}
-                          href="#pablo"
+                          href='#pablo'
                           onClick={(e) => toggleNavs(e, 1)}
                         >
-                          <span className="d-none d-md-block">Month</span>
-                          <span className="d-md-none">M</span>
+                          <span className='d-none d-md-block'>Month</span>
+                          <span className='d-md-none'>M</span>
                         </NavLink>
                       </NavItem>
                       <NavItem>
@@ -96,12 +79,12 @@ const Index = (props) => {
                           className={classnames("py-2 px-3", {
                             active: activeNav === 2,
                           })}
-                          data-toggle="tab"
-                          href="#pablo"
+                          data-toggle='tab'
+                          href='#pablo'
                           onClick={(e) => toggleNavs(e, 2)}
                         >
-                          <span className="d-none d-md-block">Week</span>
-                          <span className="d-md-none">W</span>
+                          <span className='d-none d-md-block'>Week</span>
+                          <span className='d-md-none'>W</span>
                         </NavLink>
                       </NavItem>
                     </Nav>
@@ -110,7 +93,7 @@ const Index = (props) => {
               </CardHeader>
               <CardBody>
                 {/* Chart */}
-                <div className="chart">
+                <div className='chart'>
                   <Line
                     data={chartExample1[chartExample1Data]}
                     options={chartExample1.options}
@@ -120,21 +103,21 @@ const Index = (props) => {
               </CardBody>
             </Card>
           </Col>
-          <Col xl="4">
-            <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-muted ls-1 mb-1">
+          <Col xl='4'>
+            <Card className='shadow'>
+              <CardHeader className='bg-transparent'>
+                <Row className='align-items-center'>
+                  <div className='col'>
+                    <h6 className='text-uppercase text-muted ls-1 mb-1'>
                       Performance
                     </h6>
-                    <h2 className="mb-0">Total orders</h2>
+                    <h2 className='mb-0'>Total orders</h2>
                   </div>
                 </Row>
               </CardHeader>
               <CardBody>
                 {/* Chart */}
-                <div className="chart">
+                <div className='chart'>
                   <Bar
                     data={chartExample2.data}
                     options={chartExample2.options}
